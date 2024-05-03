@@ -26,6 +26,10 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // JGit
+    // https://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit
+    implementation 'org.eclipse.jgit:org.eclipse.jgit:6.7.0.202309050840-r'
 }
 
 tasks.named('test') {
