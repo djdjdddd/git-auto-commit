@@ -1,10 +1,10 @@
 package com.autocommit.git;
 
+import com.autocommit.git.user.MyConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.RemoteAddCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.api.errors.NoFilepatternException;
 import org.eclipse.jgit.transport.URIish;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
@@ -21,10 +21,7 @@ public class AutoPush {
     public static void main(String[] args) {
 
         // 깃 사용자 정보를 담은 객체
-        User user = new User();
-        user.setUserName("djdj2297@gmail.com");
-        user.setPassword("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");
-        log.info("user = {}", user);
+//        log.info("user = {}", user);
 
         // 로컬 레포와 리모트 레포를 연결하는 코드
         String folderPath = "C:\\Users\\SSS\\IdeaProjects\\git";
@@ -53,7 +50,7 @@ public class AutoPush {
 
             // git push origin main 역할
             git.push()
-                    .setCredentialsProvider(new UsernamePasswordCredentialsProvider(user.getUserName(), user.getPassword()))
+                    .setCredentialsProvider(new UsernamePasswordCredentialsProvider(MyConfig.username, MyConfig.accessToken))
                     .setRemote(ORIGIN).add(MAIN)
                     .call();
 

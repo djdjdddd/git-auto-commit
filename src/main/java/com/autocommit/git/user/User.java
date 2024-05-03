@@ -1,14 +1,12 @@
-package com.autocommit.git;
+package com.autocommit.git.user;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Builder
 @Getter
-@Setter
-@ToString
 public class User {
 
     @Value("${github.username}")
