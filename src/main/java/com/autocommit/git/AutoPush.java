@@ -1,6 +1,5 @@
 package com.autocommit.git;
 
-import com.autocommit.git.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.RemoteAddCommand;

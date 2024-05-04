@@ -1,4 +1,4 @@
-package com.autocommit.git.user;
+package com.autocommit.git;
 
 import lombok.extern.slf4j.Slf4j;
 
