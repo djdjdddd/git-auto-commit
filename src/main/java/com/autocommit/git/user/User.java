@@ -9,9 +9,9 @@ import java.util.Properties;
 @Slf4j
 public class User {
 
-    public static String username;
+    public static String githubId;
 
-    public static String accessToken;
+    public static String githubAccessToken;
 
     private static String GITHUB_ID = "github.id";
 
@@ -25,8 +25,8 @@ public class User {
         properties = new Properties();
         try {
             properties.load(new FileInputStream(PROPERTIES_FILE_PATH));
-            username = properties.getProperty(GITHUB_ID);
-            accessToken = properties.getProperty(GITHUB_ACCESS_TOKEN);
+            githubId = properties.getProperty(GITHUB_ID);
+            githubAccessToken = properties.getProperty(GITHUB_ACCESS_TOKEN);
         } catch (IOException e) {
             log.error("error", e);
             throw new RuntimeException(e);

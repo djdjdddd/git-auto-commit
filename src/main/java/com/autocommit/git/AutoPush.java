@@ -16,9 +16,13 @@ import java.net.URISyntaxException;
 public class AutoPush {
 
     // TODO. 하루에 한번 실행하게 하려면 어떻게 해야 되지??
+    private static final String ORIGIN = "origin";
 
-    private static String ORIGIN = "origin";
-    private static String MAIN = "main";
+    private static final String MAIN = "main";
+
+    private static final String LOCAL_REPO_PATH = "C:/Users/SSS/IdeaProjects/git-auto-commit";
+
+    private static final String REMOTE_REPO_PATH = "https://github.com/djdjdddd/git-auto-commit.git";
 
     public static void main(String[] args) {
         // TODO. 파일 타입(생성/수정/삭제)을 인식해서 커밋 컨벤션 자동으로 생성되게 할 수 없을까??
@@ -28,9 +32,8 @@ public class AutoPush {
         
         // TODO. 코드 리팩토링
         // 로컬 레포와 리모트 레포를 연결하는 코드
-        String folderPath = "C:\\Users\\SSS\\IdeaProjects\\git";
         try {
-            Git git = Git.open(new File(folderPath));
+            Git git = Git.open(new File(LOCAL_REPO_PATH));
             RemoteAddCommand remoteAddCommand = git.remoteAdd();
             remoteAddCommand.setName(ORIGIN);
 
@@ -38,7 +41,7 @@ public class AutoPush {
                                                 // TODO. 단계별 시각화 안되나??
 
             // 여기에는 리모트 레포의 경로를 넣어주자
-            remoteAddCommand.setUri(new URIish("https://github.com/djdjdddd/git-auto-commit.git"));
+            remoteAddCommand.setUri(new URIish(REMOTE_REPO_PATH));
 
             System.out.println("setUri pass");
 
@@ -55,7 +58,7 @@ public class AutoPush {
 
             // git push origin main 역할
             git.push()
-                    .setCredentialsProvider(new UsernamePasswordCredentialsProvider(User.username, User.accessToken))
+                    .setCredentialsProvider(new UsernamePasswordCredentialsProvider(User.githubId, User.githubAccessToken))
                     .setRemote(ORIGIN).add(MAIN)
                     .call();
 
